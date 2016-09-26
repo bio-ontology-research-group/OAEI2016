@@ -55,25 +55,24 @@ public class AxiomAlignmentAlgorithm extends AlgorithmAlignment{
                             }
                         }
                     }
-                    Set<OWLClass> subClasses = phenomeReasoner.getSubClasses(clazz, false).getFlattened();
+                    Set<OWLClass> subClasses = phenomeReasoner.getSubClasses(clazz, true).getFlattened();
                     for (OWLClass subClass : subClasses) {
                         //we check the subclasses
                         if (targetClasses.contains(subClass)) {
                             alignment.addSubclassMapping(clazz.getIRI().toURI().toString(), subClass.getIRI().toURI().toString(), 1.0);
                             subEqClassesCounter++;
+                            superEqClassesCounter++;
                         }
                     }
 
-                    Set<OWLClass> superClasses = phenomeReasoner.getSuperClasses(clazz, false).getFlattened();
+                    Set<OWLClass> superClasses = phenomeReasoner.getSuperClasses(clazz, true).getFlattened();
                     for (OWLClass superClass : superClasses) {
                         //we check the superclasses
                         if (targetClasses.contains(superClass)) {
                             alignment.addSuperclassMapping(clazz.getIRI().toURI().toString(), superClass.getIRI().toURI().toString(), 1.0);
-                            superEqClassesCounter++;
                         }
                     }
                 }
-
 
                 Set<OWLClass> phenomeNetClasses = phenomeNetOnto.getClassesInSignature();
 
@@ -137,7 +136,6 @@ public class AxiomAlignmentAlgorithm extends AlgorithmAlignment{
                 System.out.println("\tTotal number of phenotype classes (MP) in the PhenomeNET ontology:"+mpClasses);
                 System.out.println("\tTotal number of phenotype classes (DOID) in the PhenomeNET ontology:"+doidClasses);
                 System.out.println("\tTotal number of phenotype classes (ORDO) in the PhenomeNET ontology:"+ordoClasses);
-
 
             }catch (Exception e){
                 e.printStackTrace();
