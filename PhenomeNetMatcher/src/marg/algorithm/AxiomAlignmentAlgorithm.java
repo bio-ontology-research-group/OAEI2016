@@ -47,6 +47,7 @@ public class AxiomAlignmentAlgorithm extends AlgorithmAlignment{
                     if (!node.getRepresentativeElement().isOWLNothing()) {
                         Set<OWLClass> entities = node.getEntities();
                         entities.remove(nothing);
+                        entities.remove(thing);
                         //we check the equivalent classes
                         for (OWLClass entity : entities) {
                             if (targetClasses.contains(entity)) {
@@ -56,20 +57,25 @@ public class AxiomAlignmentAlgorithm extends AlgorithmAlignment{
                         }
                     }
                     Set<OWLClass> subClasses = phenomeReasoner.getSubClasses(clazz, true).getFlattened();
+                    subClasses.remove(nothing);
+                    subClasses.remove(thing);
                     for (OWLClass subClass : subClasses) {
                         //we check the subclasses
                         if (targetClasses.contains(subClass)) {
                             alignment.addSubclassMapping(clazz.getIRI().toURI().toString(), subClass.getIRI().toURI().toString(), 1.0);
                             subEqClassesCounter++;
-                            superEqClassesCounter++;
                         }
                     }
 
                     Set<OWLClass> superClasses = phenomeReasoner.getSuperClasses(clazz, true).getFlattened();
+                    superClasses.remove(nothing);
+                    superClasses.remove(thing);
                     for (OWLClass superClass : superClasses) {
                         //we check the superclasses
                         if (targetClasses.contains(superClass)) {
                             alignment.addSuperclassMapping(clazz.getIRI().toURI().toString(), superClass.getIRI().toURI().toString(), 1.0);
+                            superEqClassesCounter++;
+
                         }
                     }
                 }

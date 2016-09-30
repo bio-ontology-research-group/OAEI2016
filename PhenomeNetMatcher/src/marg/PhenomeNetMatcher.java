@@ -133,40 +133,39 @@ public class PhenomeNetMatcher {
             PhenomeNetMatcher matcher = new PhenomeNetMatcher(0);
             System.out.println("PLAIN_ONTOLOGY_ALIGNMENT\tHPvsMP");
             //matcher.align(hpFile.toURI().toURL(), mpFile.toURI().toURL());
-            matcher.evaluateAlignment(hpFile.toURI().toURL(),mpFile.toURI().toURL(),mphpBaseline.toURI().toURL());
-
+            matcher.evaluateAlignment(hpFile.toURI().toURL(), mpFile.toURI().toURL(),mphpBaseline.toURI().toURL());
 
             matcher = new PhenomeNetMatcher(1);
             System.out.println("MAP_ONTOLOGY_ALIGNMENT\tHPvsMP");
             //matcher.align(hpFile.toURI().toURL(), mpFile.toURI().toURL());
-            matcher.evaluateAlignment(hpFile.toURI().toURL(),mpFile.toURI().toURL(),mphpBaseline.toURI().toURL());
+            matcher.evaluateAlignment(hpFile.toURI().toURL(), mpFile.toURI().toURL(),mphpBaseline.toURI().toURL());
 
 
             matcher = new PhenomeNetMatcher(2);
             System.out.println("FULL_ONTOLOGY_ALIGNMENT\tHPvsMP");
             //matcher.align(hpFile.toURI().toURL(), mpFile.toURI().toURL());
-            matcher.evaluateAlignment(hpFile.toURI().toURL(),mpFile.toURI().toURL(),mphpBaseline.toURI().toURL());
+            matcher.evaluateAlignment(hpFile.toURI().toURL(), mpFile.toURI().toURL(),mphpBaseline.toURI().toURL());
 
 
-            File doid = new File(System.getProperty("user.dir") + "/baseline/DOID.rdf");
-            File ordo = new File(System.getProperty("user.dir") + "/baseline/ORDO.rdf");
-            File doidordoBaseline = new File(System.getProperty("user.dir") + "/baseline/DOID_ORDO_baseline.rdf");
+            File doidFile = new File(System.getProperty("user.dir") + "/baseline/DOID.rdf");
+            File ordoFile = new File(System.getProperty("user.dir") + "/baseline/ORDO.rdf");
+            File doidordoBaseline = new File(System.getProperty("user.dir")+"/baseline/DOID_ORDO_baseline.rdf");
 
             matcher = new PhenomeNetMatcher(0);
             System.out.println("PLAIN_ONTOLOGY_ALIGNMENT\tDOIDvsORDO");
-            //matcher.align(doid.toURI().toURL(), ordo.toURI().toURL());
-            matcher.evaluateAlignment(doid.toURI().toURL(),ordo.toURI().toURL(),doidordoBaseline.toURI().toURL());
-
+            //matcher.align(doidFile.toURI().toURL(), ordoFile.toURI().toURL());
+            matcher.evaluateAlignment(doidFile.toURI().toURL(), ordoFile.toURI().toURL(),doidordoBaseline.toURI().toURL());
 
             matcher = new PhenomeNetMatcher(1);
             System.out.println("MAP_ONTOLOGY_ALIGNMENT\tDOIDvsORDO");
-            //matcher.align(doid.toURI().toURL(), ordo.toURI().toURL());
-            matcher.evaluateAlignment(doid.toURI().toURL(),ordo.toURI().toURL(),doidordoBaseline.toURI().toURL());
+            //matcher.align(doidFile.toURI().toURL(), ordoFile.toURI().toURL());
+            matcher.evaluateAlignment(doidFile.toURI().toURL(), ordoFile.toURI().toURL(), doidordoBaseline.toURI().toURL());
+
 
             matcher = new PhenomeNetMatcher(2);
             System.out.println("FULL_ONTOLOGY_ALIGNMENT\tDOIDvsORDO");
-            //matcher.align(doid.toURI().toURL(), ordo.toURI().toURL());
-            matcher.evaluateAlignment(doid.toURI().toURL(),ordo.toURI().toURL(),doidordoBaseline.toURI().toURL());
+            //matcher.align(doidFile.toURI().toURL(), ordoFile.toURI().toURL());
+            matcher.evaluateAlignment(doidFile.toURI().toURL(), ordoFile.toURI().toURL(),doidordoBaseline.toURI().toURL());
 
         } catch (Exception e) {
 
